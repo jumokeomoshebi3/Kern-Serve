@@ -20,7 +20,11 @@ In another shell, you can see the output with
 sudo journalctl -f
 ```
 
+Then, to unload the module
 
+```bash
+rmmod test-00
+```
 
 
 ---
