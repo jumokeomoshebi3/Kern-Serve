@@ -48,7 +48,7 @@ static int __init ks_init(void)
 
     printk(KERN_INFO LOG "Loading " MYNAME "\n");
 
-    /* Creating the socket */
+    /* Create the socket */
     ret = sock_create_kern(
             &init_net,
             AF_INET,
