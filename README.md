@@ -20,6 +20,12 @@ In another shell, you can see the output with
 sudo journalctl -f
 ```
 
+or
+
+```bash
+sudo dmesg -w
+```
+
 Then, to unload the module
 
 ```bash
