@@ -8,6 +8,7 @@
 
 MODULE_LICENSE("GPL");
 MODULE_DESCRIPTION("Kern-Serve Phase 3: Spawn a Kernel thread where the listening logic will happen");
+MODULE_AUTHOR("Jumi & Aaron");
 
 #define KS_PORT                   80
 #define MYNAME                    "Kern-Serve"
