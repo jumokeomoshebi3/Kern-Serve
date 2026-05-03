@@ -391,13 +391,21 @@ static void __exit ks_exit(void)
         printk(KERN_INFO LOG PRETTY_THREAD_NAME " terminated.\n");
     }
     
-    // We do the socket after the thread, since the thread
-    // uses the socket.
+    // We do the sockets after the thread, since the thread
+    // uses the sockets.
     if (ks_sock) {
         sock_release(ks_sock);
         ks_sock = NULL;
-        printk(KERN_INFO LOG "socket released\n");
+        printk(KERN_INFO LOG "ks_sock socket released\n");
     }
+    
+    if(conn_from_client) {
+        sock_release(conn_from_client);
+        conn_from_client = NULL;
+        printk(KERN_INFO LOG "conn_from_client socket released\n");
+    }
+    
+    kfree(conn_from_client);
     
     printk(KERN_INFO LOG "unloaded.\n");
 }
