@@ -14,4 +14,4 @@
 
 ## Questions to Answer
 
-Why is there a 10 in kernel_accept? [https://elixir.bootlin.com/linux/v7.0.1/source/net/socket.c#L3567](https://elixir.bootlin.com/linux/v7.0.1/source/net/socket.c#L3567)
+
