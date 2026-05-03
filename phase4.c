@@ -28,7 +28,12 @@ static int handle_http_response(void) {
     struct msghdr *message;
     struct kvec *vec;
     
-    /* buff for kvec */
+    /* string for kvec */
+    /*
+     * LATER! Keep the headers, dynamically determine content-length,
+     * and replace the body with content from a file
+     */
+    
     char *response = 
         "HTTP/1.1 200 OK\r\n"
         "Content-Type: text/html\r\n"
