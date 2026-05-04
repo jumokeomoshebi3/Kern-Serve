@@ -343,14 +343,16 @@ static int parse_http_request(char* request) {
 }
 
 static int handle_http_response(void) {
-    /* kernel_sendmsg parameters */
     struct msghdr *message;
     struct kvec *vec;
     
-    /* string for kvec */
     /*
      * LATER! Phase 5!! Keep these headers, but dynamically determine content-length
      * because we'll want to pull it from a file instead of hardcoding it below.
+     * Probably make another method to look for the file using request_target,
+     * then if it's there, do this same response thing below but replace the body
+     * with the file content, and update Content-Length accordingly.
+     * If the file isn't there, construct a 404 not found response instead.
      */
     
     char *response = 
@@ -365,48 +367,34 @@ static int handle_http_response(void) {
     int ret;
 
     message = kmalloc(sizeof(*message), GFP_KERNEL);
+    if (!message) {
+        printk(KERN_ERR LOG "Error allocating memory for message\n");
+        kfree(message);
+        return -1;
+    }
     
-    /* Set up message */
     message->msg_name = 0;
     message->msg_namelen = 0;
     message->msg_control = NULL;
     message->msg_controllen = 0;
     message->msg_flags = MSG_DONTWAIT;
     
-    /* We need to set up vec similar to how we did message */
     vec = kmalloc(sizeof(*vec), GFP_KERNEL);
+    if (!vec) {
+        printk(KERN_ERR LOG "Error allocating memory for vec\n");
+        kfree(vec);
+        kfree(message);
+        return -2;
+    }
     
-    /* Set up vec */
     vec->iov_len = strlen(response);
     vec->iov_base = response;
-    
-    // DON'T FORGET WE NEED TO FREE UP ALL THIS MEMORY LATER !!!
-    /* https://www.kernel.org/doc/html/latest/core-api/memory-allocation.html */
-    /* "Objects allocated by kmalloc can be freed by kfree or kvfree." */
     
     if (conn_from_client == NULL) {
         printk(KERN_ERR LOG "TCP send socket (conn_from_client) is NULL, cannot handle connection.\n");
         kfree(vec);
         kfree(message);
-        return -1;
-    }
-    if (!response) {
-        printk(KERN_ERR LOG "Error allocating memory for buff\n");
-        kfree(vec);
-        kfree(message);
-        return -2;
-    }
-    if (!vec) {
-        printk(KERN_ERR LOG "Error allocating memory for vec\n");
-        kfree(vec);
-        kfree(message);
         return -3;
-    }
-    if (!message) {
-        printk(KERN_ERR LOG "Error allocating memory for message\n");
-        kfree(vec);
-        kfree(message);
-        return -4;
     }
     
     do {
@@ -422,7 +410,7 @@ static int handle_http_response(void) {
         printk(KERN_ERR LOG "Error sending response, (code %d)\n", ret);
         kfree(vec);
         kfree(message);
-        return -5;
+        return -4;
     }
     
     printk(KERN_INFO LOG "Response sent!\n\n");
