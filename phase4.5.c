@@ -151,7 +151,7 @@ static int listen_loop(void *data) {
         
         ret = kernel_accept(ks_sock, &conn_from_client, 0);
         /*
-         * I noticed -512 (ERESTARTSYS) is the error code return when the
+         * I noticed -512 (ERESTARTSYS) is the error code returned when the
          * function is waiting for a connection here and we rmmod. Figured we 
          * should handle this condition gracefully rather than printing an error.
          */
