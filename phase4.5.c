@@ -15,7 +15,8 @@ MODULE_AUTHOR("Jumi & Aaron");
 #define KS_PORT                   80
 #define MYNAME                    "Kern-Serve"
 #define LOG                       MYNAME ": "
-#define PRETTY_THREAD_NAME MYNAME "/listen_thread"
+#define PRETTY_THREAD_NAME        MYNAME "/listen_thread"
+
 /* Just make a big size for messages */
 #define MAX_REQUEST_SIZE          4096
 
