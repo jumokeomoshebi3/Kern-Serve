@@ -349,8 +349,8 @@ static int handle_http_response(void) {
     
     /* string for kvec */
     /*
-     * LATER! Keep the headers, dynamically determine content-length,
-     * and replace the body with content from a file
+     * LATER! Phase 5!! Keep these headers, but dynamically determine content-length
+     * because we'll want to pull it from a file instead of hardcoding it below.
      */
     
     char *response = 
