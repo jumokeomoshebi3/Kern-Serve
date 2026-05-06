@@ -16,4 +16,5 @@ Point out there's no thread_join. It just spawns it up and it's off to the races
 
 
 ## TO DO
-Don't forget to add attributions in code
+* Don't forget to add attributions in code
+* Don't forget to check if file mem stuff needs to be released in exit()
