@@ -53,8 +53,6 @@ static void close_socket(void);
 static int __init ks_init(void) {
     struct sockaddr_in addr;
     int ret;
-    
-    // maybe check if directory exists first?
 
     printk(KERN_INFO LOG "Loading " MYNAME "\n");
 
@@ -72,7 +70,6 @@ static int __init ks_init(void) {
     }
     printk(KERN_INFO LOG "Socket created\n");
     
-    // Find source for this.
     sock_set_reuseaddr(ks_sock->sk);
 
     /* Bind socket to port */
