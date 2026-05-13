@@ -105,7 +105,7 @@ And you can request a fake page to see the 404 error.
 curl -w "%{http_code}" http://localhost/some-fake-page; echo
 ```
 
-You can even view it from a web browser if you set up the networking on your VM properly (that's outside the scope of this README; I'll leave that as an exercise for the interprising tester).
+You can even view it from a web browser if you set up the networking on your VM properly (that's outside the scope of this README; I'll leave that as an exercise for the interprising tester). If you do, make sure to type `http://` into your web browser, NOT `https://`. Most browser will try to force HTTPS, but Kern-Serve only accepts HTTP requests on the standard port 80.
 
 ## Unload the Module
 
