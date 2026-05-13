@@ -36,6 +36,36 @@ Within that directory, run `make`.
 make
 ```
 
+### Error! Uh oh!
+
+**NOTE:** The Makefile seems to *require* tab characters, *not* spaces. The version we've included here should include them, but it seems like sometimes moving the file around (i.e. pulling it from Github) will replace those tabs with space.
+
+```
+obj-m += kern-serve.o
+all:
+        make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+clean:
+        make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+```
+
+If you try to run `make` and you get an error like this,
+
+```
+Makefile:3: *** missing separator (did you mean TAB instead of 8 spaces?).  Stop.
+```
+
+**Edit the make file** and replace the spaces in front of lines 3 and 5 with tabs.
+
+```
+obj-m += kern-serve.o
+all:
+/* TAB HERE */make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+clean:
+/* TAB HERE */make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+```
+
+Then run `make` again.
+
 ### Insert into the kernel
 
 Then, (still within the directory where you made the module) insert the module into the kernel.
