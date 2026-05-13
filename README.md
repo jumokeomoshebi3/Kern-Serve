@@ -112,5 +112,5 @@ You can even view it from a web browser if you set up the networking on your VM 
 When you're done playing with it, (from within the directory where you made the module) you can unload the module from the kernel like this.
 
 ```bash
-rmmod test-00
+rmmod kern-serve
 ```
