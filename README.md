@@ -1,6 +1,6 @@
 # Kern-Serve
 
-Put 'kern-serve.c' and 'Makefile'
+Put `kern-serve.c` and `Makefile`
 
 As root, run
 
