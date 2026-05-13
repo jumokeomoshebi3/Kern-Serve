@@ -95,14 +95,14 @@ curl http://localhost
 If you want to see the HTTP code, you can run it like this.
 
 ```bash
-curl -w "%{http_code}" http://localhost
+curl -w "%{http_code}" http://localhost; echo
 ```
 
 And you can request a fake page to see the 404 error.
 
 
 ```bash
-curl -w "%{http_code}" http://localhost/some-fake-page
+curl -w "%{http_code}" http://localhost/some-fake-page; echo
 ```
 
 You can even view it from a web browser if you set up the networking on your VM properly (that's outside the scope of this README; I'll leave that as an exercise for the interprising tester).
