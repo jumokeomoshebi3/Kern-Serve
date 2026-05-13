@@ -21,7 +21,7 @@ You can put whatever HTML, CSS, Javascript files you like in there. Kern-Serve w
 Here is a command you can copy and paste for ease of testing.
 
 ```bash
-echo "<html><head><title>Kern-Serve</title></head><body>It's Kern-Serve!</body></html>" > /etc/kern-serve/index.html
+echo "<html><head><title>Kern-Serve</title></head><body><h1>It's Kern-Serve!</h1></body></html>" > /etc/kern-serve/index.html
 ```
 
 ## Compilation
