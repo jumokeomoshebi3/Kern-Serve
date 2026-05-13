@@ -1,6 +1,6 @@
-# Instructions (so far)
+# Kern-Serve
 
-Put these two files in the same directory.
+Put 'kern-serve.c' and 'Makefile'
 
 As root, run
 
