@@ -30,7 +30,7 @@ echo -e '<html><head><title>Kern-Serve</title></head><body><h1>It&apos;s Kern-Se
 
 Put `kern-serve.c` and `Makefile` in the same directory.
 
-Run `make`.
+Within that directory, run `make`.
 
 ```bash
 make
@@ -38,7 +38,7 @@ make
 
 ### Insert into the kernel
 
-Then, insert the module into the kernel.
+Then, (still within the directory where you made the module) insert the module into the kernel.
 
 ```bash
 insmod ./kern-serve.ko
@@ -79,7 +79,7 @@ You can even view it from a web browser if you set up the networking on your VM 
 
 ## Unload the Module
 
-When you're done playing with it, you can unload the module from the kernel like this.
+When you're done playing with it, (from within the directory where you made the module) you can unload the module from the kernel like this.
 
 ```bash
 rmmod test-00
